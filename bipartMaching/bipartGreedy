@@ -44,11 +44,11 @@ w3 = 3
 G.add_weighted_edges_from([('Gijs', 'Voorzitter', w1),
                            ('Gijs', 'Penningmeester', wMax),
                            ('Gijs', 'Secretaris', wMax),
-                           ('Gijs', 'Onderwijs WB', wMax),
+                           ('Gijs', 'Onderwijs WB', w3),
                            ('Gijs', 'Onderwijs KT', wMax),
                            ('Gijs', 'Onderwijs MT', wMax),
-                           ('Gijs', 'Faciliteiten1', w3),
-                           ('Gijs', 'Faciliteiten2', w3),
+                           ('Gijs', 'Faciliteiten1', w2),
+                           ('Gijs', 'Faciliteiten2', w2),
                            ('Gijs', 'Communicatie', wMax),
                            ('Gijs', 'Promo', wMax)])
 
