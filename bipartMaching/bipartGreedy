@@ -1,0 +1,161 @@
+import networkx as nx
+from networkx.algorithms.bipartite import minimum_weight_full_matching
+import matplotlib.pyplot as plt
+
+
+""" ""
+top_nodes = [1, 2]
+G.add_nodes_from(top_nodes)
+G.add_nodes_from([3,4,5])
+G.add_weighted_edges_from([(1,3,4),(1,4,2),(1,5,18),(2,3,2),(2,4,10),(2,5,0.1)])
+
+res = minimum_weight_full_matching(G, top_nodes)
+print(res)
+"""
+G = nx.Graph()
+
+# people and functions
+top_nodes = ['Gijs',
+                  'Elise',
+                  'Casper',
+                  'Joyce',
+                  'Joup',
+                  'Lara',
+                  'Lies',
+                  'Joris',
+                  'Begum',
+                  'Carine']
+G.add_nodes_from(top_nodes)
+
+G.add_nodes_from(['Voorzitter',
+                  'Penningmeester',
+                  'Secretaris',
+                  'Onderwijs WB',
+                  'Onderwijs KT',
+                  'Onderwijs MT',
+                  'Faciliteiten1',
+                  'Faciliteiten2',
+                  'Communicatie',
+                  'Promo'])
+wMax = 10
+w1 = 1
+w2 = 2
+w3 = 3
+G.add_weighted_edges_from([('Gijs', 'Voorzitter', w1),
+                           ('Gijs', 'Penningmeester', wMax),
+                           ('Gijs', 'Secretaris', wMax),
+                           ('Gijs', 'Onderwijs WB', wMax),
+                           ('Gijs', 'Onderwijs KT', wMax),
+                           ('Gijs', 'Onderwijs MT', wMax),
+                           ('Gijs', 'Faciliteiten1', w3),
+                           ('Gijs', 'Faciliteiten2', w3),
+                           ('Gijs', 'Communicatie', wMax),
+                           ('Gijs', 'Promo', wMax)])
+
+G.add_weighted_edges_from([('Elise', 'Voorzitter', w1),
+                           ('Elise', 'Penningmeester', w2),
+                           ('Elise', 'Secretaris', wMax),
+                           ('Elise', 'Onderwijs WB', wMax),
+                           ('Elise', 'Onderwijs KT', wMax),
+                           ('Elise', 'Onderwijs MT', wMax),
+                           ('Elise', 'Faciliteiten1', w3),
+                           ('Elise', 'Faciliteiten2', w3),
+                           ('Elise', 'Communicatie', wMax),
+                           ('Elise', 'Promo', wMax)])
+
+G.add_weighted_edges_from([('Casper', 'Voorzitter', wMax),
+                           ('Casper', 'Penningmeester', w1),
+                           ('Casper', 'Secretaris', wMax),
+                           ('Casper', 'Onderwijs WB', wMax),
+                           ('Casper', 'Onderwijs KT', wMax),
+                           ('Casper', 'Onderwijs MT', w2),
+                           ('Casper', 'Faciliteiten1', w3),
+                           ('Casper', 'Faciliteiten2', w3),
+                           ('Casper', 'Communicatie', wMax),
+                           ('Casper', 'Promo', wMax)])
+
+G.add_weighted_edges_from([('Joyce', 'Voorzitter', wMax),
+                           ('Joyce', 'Penningmeester', w3),
+                           ('Joyce', 'Secretaris', wMax),
+                           ('Joyce', 'Onderwijs WB', wMax),
+                           ('Joyce', 'Onderwijs KT', wMax),
+                           ('Joyce', 'Onderwijs MT', wMax),
+                           ('Joyce', 'Faciliteiten1', wMax),
+                           ('Joyce', 'Faciliteiten2', wMax),
+                           ('Joyce', 'Communicatie', w1),
+                           ('Joyce', 'Promo', w2)])
+
+G.add_weighted_edges_from([('Joup', 'Voorzitter', wMax),
+                           ('Joup', 'Penningmeester', w1),
+                           ('Joup', 'Secretaris', wMax),
+                           ('Joup', 'Onderwijs WB', w2),
+                           ('Joup', 'Onderwijs KT', wMax),
+                           ('Joup', 'Onderwijs MT', wMax),
+                           ('Joup', 'Faciliteiten1', w3),
+                           ('Joup', 'Faciliteiten2', w3),
+                           ('Joup', 'Communicatie', wMax),
+                           ('Joup', 'Promo', wMax)])
+
+G.add_weighted_edges_from([('Lara', 'Voorzitter', w2),
+                           ('Lara', 'Penningmeester', wMax),
+                           ('Lara', 'Secretaris', wMax),
+                           ('Lara', 'Onderwijs WB', wMax),
+                           ('Lara', 'Onderwijs KT', wMax),
+                           ('Lara', 'Onderwijs MT', wMax),
+                           ('Lara', 'Faciliteiten1', w1),
+                           ('Lara', 'Faciliteiten2', w1),
+                           ('Lara', 'Communicatie', w3),
+                           ('Lara', 'Promo', wMax)])
+
+G.add_weighted_edges_from([('Lies', 'Voorzitter', w3),
+                           ('Lies', 'Penningmeester', wMax),
+                           ('Lies', 'Secretaris', wMax),
+                           ('Lies', 'Onderwijs WB', wMax),
+                           ('Lies', 'Onderwijs KT', wMax),
+                           ('Lies', 'Onderwijs MT', wMax),
+                           ('Lies', 'Faciliteiten1', w1),
+                           ('Lies', 'Faciliteiten2', w1),
+                           ('Lies', 'Communicatie', w2),
+                           ('Lies', 'Promo', wMax)])
+
+G.add_weighted_edges_from([('Joris', 'Voorzitter', w3),
+                           ('Joris', 'Penningmeester', wMax),
+                           ('Joris', 'Secretaris', wMax),
+                           ('Joris', 'Onderwijs WB', wMax),
+                           ('Joris', 'Onderwijs KT', w1),
+                           ('Joris', 'Onderwijs MT', wMax),
+                           ('Joris', 'Faciliteiten1', wMax),
+                           ('Joris', 'Faciliteiten2', wMax),
+                           ('Joris', 'Communicatie', w2),
+                           ('Joris', 'Promo', wMax)])
+
+G.add_weighted_edges_from([('Begum', 'Voorzitter', wMax),
+                           ('Begum', 'Penningmeester', wMax),
+                           ('Begum', 'Secretaris', wMax),
+                           ('Begum', 'Onderwijs WB', w1),
+                           ('Begum', 'Onderwijs KT', wMax),
+                           ('Begum', 'Onderwijs MT', wMax),
+                           ('Begum', 'Faciliteiten1', wMax),
+                           ('Begum', 'Faciliteiten2', wMax),
+                           ('Begum', 'Communicatie', w3),
+                           ('Begum', 'Promo', w2)])
+
+G.add_weighted_edges_from([('Carine', 'Voorzitter', wMax),
+                           ('Carine', 'Penningmeester', wMax),
+                           ('Carine', 'Secretaris', wMax),
+                           ('Carine', 'Onderwijs WB', w1),
+                           ('Carine', 'Onderwijs KT', wMax),
+                           ('Carine', 'Onderwijs MT', wMax),
+                           ('Carine', 'Faciliteiten1', w2),
+                           ('Carine', 'Faciliteiten2', w2),
+                           ('Carine', 'Communicatie', w3),
+                           ('Carine', 'Promo', wMax)])
+
+
+# this is just a check
+print(nx.is_connected(G))
+
+res = minimum_weight_full_matching(G, top_nodes)
+print(res)
+
+
