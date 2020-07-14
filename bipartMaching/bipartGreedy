@@ -1,6 +1,20 @@
 import networkx as nx
 from networkx.algorithms.bipartite import minimum_weight_full_matching
-import matplotlib.pyplot as plt
+
+# there are multiple optional results. The difference is:
+"""
+Gijs : Voorzitter               or      Gijs : Faciliteiten2
+Elise : Penningmeester          or      Elise : Voorzitter
+Joup : Secretaris               or      Joup : Penningmeester
+Lies : Faciliteiten2            or      Lies : Secretaris
+
+Joyce : Communicatie                    Joyce : Communicatie              
+Carine : Onderwijs WB                   Carine : Onderwijs WB
+Lara : Faciliteiten1                    Lara : Faciliteiten1
+Joris : Onderwijs KT                    Joris : Onderwijs KT
+Begum : Promo                           Begum : Promo
+Casper : Onderwijs MT                   Casper : Onderwijs MT         
+"""
 
 
 G = nx.Graph()
@@ -28,11 +42,15 @@ G.add_nodes_from(['Voorzitter',
                   'Faciliteiten2',
                   'Communicatie',
                   'Promo'])
+
+# weights, low weights are more easier matched, wSuperMax is the function people choose not to do
 wMax = 10
 wSuperMax = 1000
 w1 = 1
 w2 = 2
 w3 = 3
+
+# people and function preferences
 G.add_weighted_edges_from([('Gijs', 'Voorzitter', w1),
                            ('Gijs', 'Penningmeester', wMax),
                            ('Gijs', 'Secretaris', wSuperMax),
@@ -144,10 +162,16 @@ G.add_weighted_edges_from([('Carine', 'Voorzitter', wMax),
                            ('Carine', 'Promo', wMax)])
 
 
-# this is just a check
-print(nx.is_connected(G))
+# the graph should be connected to solve the bipart matching problem
+print('is the graph connected: ' + str(nx.is_connected(G)) + '\n')
 
-res = minimum_weight_full_matching(G, top_nodes)
-print(res)
+# use networkx to calculate the optimal matchings
+matches = minimum_weight_full_matching(G, top_nodes)
+
+# print result in human readeble format
+for match in matches:
+    if match in top_nodes:
+        print(match + ' : ' + matches[match])
+
 
 
