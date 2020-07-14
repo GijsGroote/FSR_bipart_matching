@@ -3,15 +3,6 @@ from networkx.algorithms.bipartite import minimum_weight_full_matching
 import matplotlib.pyplot as plt
 
 
-""" ""
-top_nodes = [1, 2]
-G.add_nodes_from(top_nodes)
-G.add_nodes_from([3,4,5])
-G.add_weighted_edges_from([(1,3,4),(1,4,2),(1,5,18),(2,3,2),(2,4,10),(2,5,0.1)])
-
-res = minimum_weight_full_matching(G, top_nodes)
-print(res)
-"""
 G = nx.Graph()
 
 # people and functions
@@ -38,12 +29,13 @@ G.add_nodes_from(['Voorzitter',
                   'Communicatie',
                   'Promo'])
 wMax = 10
+wSuperMax = 1000
 w1 = 1
 w2 = 2
 w3 = 3
 G.add_weighted_edges_from([('Gijs', 'Voorzitter', w1),
                            ('Gijs', 'Penningmeester', wMax),
-                           ('Gijs', 'Secretaris', wMax),
+                           ('Gijs', 'Secretaris', wSuperMax),
                            ('Gijs', 'Onderwijs WB', w3),
                            ('Gijs', 'Onderwijs KT', wMax),
                            ('Gijs', 'Onderwijs MT', wMax),
@@ -54,7 +46,7 @@ G.add_weighted_edges_from([('Gijs', 'Voorzitter', w1),
 
 G.add_weighted_edges_from([('Elise', 'Voorzitter', w1),
                            ('Elise', 'Penningmeester', w2),
-                           ('Elise', 'Secretaris', wMax),
+                           ('Elise', 'Secretaris', wSuperMax),
                            ('Elise', 'Onderwijs WB', wMax),
                            ('Elise', 'Onderwijs KT', wMax),
                            ('Elise', 'Onderwijs MT', wMax),
@@ -72,7 +64,7 @@ G.add_weighted_edges_from([('Casper', 'Voorzitter', wMax),
                            ('Casper', 'Faciliteiten1', w3),
                            ('Casper', 'Faciliteiten2', w3),
                            ('Casper', 'Communicatie', wMax),
-                           ('Casper', 'Promo', wMax)])
+                           ('Casper', 'Promo', wSuperMax)])
 
 G.add_weighted_edges_from([('Joyce', 'Voorzitter', wMax),
                            ('Joyce', 'Penningmeester', w3),
@@ -80,8 +72,8 @@ G.add_weighted_edges_from([('Joyce', 'Voorzitter', wMax),
                            ('Joyce', 'Onderwijs WB', wMax),
                            ('Joyce', 'Onderwijs KT', wMax),
                            ('Joyce', 'Onderwijs MT', wMax),
-                           ('Joyce', 'Faciliteiten1', wMax),
-                           ('Joyce', 'Faciliteiten2', wMax),
+                           ('Joyce', 'Faciliteiten1', wSuperMax),
+                           ('Joyce', 'Faciliteiten2', wSuperMax),
                            ('Joyce', 'Communicatie', w1),
                            ('Joyce', 'Promo', w2)])
 
@@ -94,10 +86,10 @@ G.add_weighted_edges_from([('Joup', 'Voorzitter', wMax),
                            ('Joup', 'Faciliteiten1', w3),
                            ('Joup', 'Faciliteiten2', w3),
                            ('Joup', 'Communicatie', wMax),
-                           ('Joup', 'Promo', wMax)])
+                           ('Joup', 'Promo', wSuperMax)])
 
 G.add_weighted_edges_from([('Lara', 'Voorzitter', w2),
-                           ('Lara', 'Penningmeester', wMax),
+                           ('Lara', 'Penningmeester', wSuperMax),
                            ('Lara', 'Secretaris', wMax),
                            ('Lara', 'Onderwijs WB', wMax),
                            ('Lara', 'Onderwijs KT', wMax),
@@ -110,7 +102,7 @@ G.add_weighted_edges_from([('Lara', 'Voorzitter', w2),
 G.add_weighted_edges_from([('Lies', 'Voorzitter', w3),
                            ('Lies', 'Penningmeester', wMax),
                            ('Lies', 'Secretaris', wMax),
-                           ('Lies', 'Onderwijs WB', wMax),
+                           ('Lies', 'Onderwijs WB', wSuperMax),
                            ('Lies', 'Onderwijs KT', wMax),
                            ('Lies', 'Onderwijs MT', wMax),
                            ('Lies', 'Faciliteiten1', w1),
@@ -120,7 +112,7 @@ G.add_weighted_edges_from([('Lies', 'Voorzitter', w3),
 
 G.add_weighted_edges_from([('Joris', 'Voorzitter', w3),
                            ('Joris', 'Penningmeester', wMax),
-                           ('Joris', 'Secretaris', wMax),
+                           ('Joris', 'Secretaris', wSuperMax),
                            ('Joris', 'Onderwijs WB', wMax),
                            ('Joris', 'Onderwijs KT', w1),
                            ('Joris', 'Onderwijs MT', wMax),
@@ -131,7 +123,7 @@ G.add_weighted_edges_from([('Joris', 'Voorzitter', w3),
 
 G.add_weighted_edges_from([('Begum', 'Voorzitter', wMax),
                            ('Begum', 'Penningmeester', wMax),
-                           ('Begum', 'Secretaris', wMax),
+                           ('Begum', 'Secretaris', wSuperMax),
                            ('Begum', 'Onderwijs WB', w1),
                            ('Begum', 'Onderwijs KT', wMax),
                            ('Begum', 'Onderwijs MT', wMax),
@@ -141,7 +133,7 @@ G.add_weighted_edges_from([('Begum', 'Voorzitter', wMax),
                            ('Begum', 'Promo', w2)])
 
 G.add_weighted_edges_from([('Carine', 'Voorzitter', wMax),
-                           ('Carine', 'Penningmeester', wMax),
+                           ('Carine', 'Penningmeester', wSuperMax),
                            ('Carine', 'Secretaris', wMax),
                            ('Carine', 'Onderwijs WB', w1),
                            ('Carine', 'Onderwijs KT', wMax),
